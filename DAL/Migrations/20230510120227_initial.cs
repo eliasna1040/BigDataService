@@ -77,7 +77,9 @@ namespace DAL.Migrations
                 name: "Features",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FeatureId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GeometryId = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PropertiesId = table.Column<int>(type: "int", nullable: false),
@@ -85,7 +87,7 @@ namespace DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Features", x => x.Id);
+                    table.PrimaryKey("PK_Features", x => x.FeatureId);
                     table.ForeignKey(
                         name: "FK_Features_DataSets_DataSetId",
                         column: x => x.DataSetId,

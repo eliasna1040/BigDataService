@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BigDataService
+namespace BigDataService.Classes
 {
-    public class Feature
+    public class JsonFeature
     {
         [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
+        public JsonGeometry Geometry { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -19,10 +19,10 @@ namespace BigDataService
         public string Type { get; set; }
 
         [JsonProperty("properties")]
-        public Properties Properties { get; set; }
+        public JsonProperties Properties { get; set; }
     }
 
-    public class Geometry
+    public class JsonGeometry
     {
         [JsonProperty("coordinates")]
         public List<double> Coordinates { get; set; }
@@ -31,7 +31,7 @@ namespace BigDataService
         public string Type { get; set; }
     }
 
-    public class Properties
+    public class JsonProperties
     {
         [JsonProperty("created")]
         public DateTime Created { get; set; }
@@ -49,12 +49,12 @@ namespace BigDataService
         public double Value { get; set; }
     }
 
-    public class DataSet
+    public class JsonDataSet
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("features")]
-        public List<Feature> Features { get; set; }
+        public List<JsonFeature> Features { get; set; }
     }
 }

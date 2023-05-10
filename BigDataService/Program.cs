@@ -1,4 +1,5 @@
 using BigDataService;
+using BigDataService.Classes;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(BigDataContext))]
-    [Migration("20230510073920_initial")]
+    [Migration("20230510120227_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -65,14 +65,21 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Feature", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeatureId"));
 
                     b.Property<int?>("DataSetId")
                         .HasColumnType("int");
 
                     b.Property<int>("GeometryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PropertiesId")
                         .HasColumnType("int");
@@ -81,7 +88,7 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("FeatureId");
 
                     b.HasIndex("DataSetId");
 

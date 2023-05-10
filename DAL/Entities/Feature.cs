@@ -10,6 +10,7 @@ namespace DAL.Entities
     public class Feature
     {
         [Key]
+        public int FeatureId { get; set; }
         public string Id { get; set; }
         public Geometry Geometry { get; set; }
 
