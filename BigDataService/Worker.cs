@@ -58,7 +58,7 @@ namespace BigDataService
             {
                 if (dataSet.Features != null && dataSet.Features.Any())
                 {
-                    using (BigDataContext context = _serviceProvider.CreateScope().ServiceProvider.GetService<BigDataContext>())
+                    using (BigDataContext context = _serviceProvider.CreateAsyncScope().ServiceProvider.GetService<BigDataContext>())
                     {
 
                         await context.DataSets.AddAsync(new()
